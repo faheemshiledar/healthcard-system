@@ -13,9 +13,14 @@ connectDB();
 
 // Security middleware
 app.use(helmet());
+const cors = require('cors');
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true,
+  origin: [
+    "http://localhost:5173",
+    "https://your-vercel-app.vercel.app"
+  ],
+  credentials: true
 }));
 
 // Rate limiting
