@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(200, 13, 13, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(30, 40, 80, 0.3) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-2xl;
+  }
+  .card-red {
+    @apply bg-crimson-950/40 backdrop-blur-sm border border-crimson-800/40 rounded-2xl;
+  }
+  .btn-primary {
+    @apply bg-crimson-600 hover:bg-crimson-700 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium px-5 py-2.5 rounded-xl border border-slate-700 transition-all duration-200 active:scale-95;
+  }
+  .input {
+    @apply w-full bg-slate-800/80 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-crimson-500/50 focus:border-crimson-600 transition-all duration-200;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-400 mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .section-title {
+    @apply font-display text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+/* QR code */
+.qr-wrapper canvas, .qr-wrapper svg { border-radius: 12px; }
+
+/* Heartbeat line animation */
+@keyframes heartbeat-line {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+.heartbeat-path {
+  stroke-dasharray: 1000;
+  animation: heartbeat-line 3s linear infinite;
+}
